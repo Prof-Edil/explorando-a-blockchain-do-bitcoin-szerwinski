@@ -29,6 +29,8 @@ done
 # Criar a string para o comando createmultisig
 pubkeys_str=$(IFS=,; echo "[${pubkeys[*]}]")
 
-bitcoin-cli createmultisig 1 "$pubkeys_str"
+result=$(bitcoin-cli createmultisig 1 "$pubkeys_str")
+
+echo $result | jq ".address" | tr -d '"'
 
 

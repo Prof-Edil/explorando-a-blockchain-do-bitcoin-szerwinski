@@ -6,4 +6,5 @@ descriptor=$(echo $descriptor_info | jq -r '.descriptor')
 
 address=$(bitcoin-cli deriveaddresses $descriptor)
 
-echo $address
+echo $address | jq ".[0]" | tr -d '"'
+
